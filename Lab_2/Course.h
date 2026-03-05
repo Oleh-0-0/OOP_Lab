@@ -7,10 +7,10 @@ class Course
 private:
 	string name_course;
 	string teacher;
-	int ball;
+	int credits;
 public:
 	Course();
-	Course(string name_course, string teacher, int ball);
+	Course(string name_course, string teacher, int credits);
 	~Course();
 	void display() const;
 };

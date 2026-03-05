@@ -5,11 +5,11 @@ using namespace std;
 Student::Student(string name, string surname, int age)
 	: name(name), surname(surname), age(age) {}
 
-Student::Student() : Student("Oleh", "Frayuk", "18") {}
+Student::Student() : Student("Oleh", "Frayuk", 18 ) {}
 
-Student::~Student() 
+Student::~Student()
 {
-	cout << "User deleate\n"
+	cout << "Sudent deleate\n";
 }
 
 void Student::display() const

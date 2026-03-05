@@ -5,13 +5,13 @@
 int main()
 {
 	Student s1;
-	Student s2("Damir", "Rozhman", "17");
+	Student s2("Damir", "Rozhman", 17 );
 
 	Schedule sc1;
-	Schedule sc2("Tuesday", "11:30", "116");
+	Schedule sc2("Tuesday", "11:30", 116 );
 
 	Course c1;
-	Course c2("English", "Mudra", "2");
+	Course c2("English", "Mudra", 2 );
 
 	s1.display();
 	s2.display();
