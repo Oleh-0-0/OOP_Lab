@@ -5,13 +5,19 @@
 int main()
 {
 	Student s1;
-	Student s2("Damir", "Rozhman", 17 );
-
+	Student s2("Damir", "Rozhman", 17)
+	
 	Schedule sc1;
 	Schedule sc2("Tuesday", "11:30", 116 );
 
 	Course c1;
 	Course c2("English", "Mudra", 2 );
+
+	Student s3 = s2;
+	Student s4 = std::move(s3);
+	Student s5 = s1 + s2;
+	cout << Student::getCount() << endl;
+
 
 	s1.display();
 	s2.display();
