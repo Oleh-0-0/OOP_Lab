@@ -27,6 +27,7 @@ public:
 
 	Student operator+(const Student& other);
 
+
 	friend ostream& operator<<(ostream& os, const Student& s);
 	friend istream& operator>>(istream& is, Student& s);
 };

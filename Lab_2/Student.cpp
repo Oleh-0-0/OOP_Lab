@@ -47,14 +47,24 @@ int Student::getCount()
     return studentCount;
 }
 
+int Student::getAge()
+{
+    return this->age;
+}
+
 Student Student::operator+(const Student& other)
 {
     return Student(name + "&" + other.name, surname, age);
 }
 
+Student Student::operator!() const
+{
+    return Student("Not " + name, surname, 0);
+}
+
 ostream& operator<<(ostream& os, const Student& s)
 {
-    os << s.name << " " << s.surname "" << s.age;
+    os << s.name << " " << s.surname << "" << s.age;
     return os;
 }
 

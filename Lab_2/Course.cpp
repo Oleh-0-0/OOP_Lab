@@ -10,7 +10,7 @@ Course::Course() : Course("OOP", "Val", 5 ) {}
 
 Course::~Course()
 {
-	cout << "Course deleate\n";
+	cout << "Course delete\n";
 }
 
 void Course::display() const

@@ -14,8 +14,8 @@ int main()
 	Course c2("English", "Mudra", 2 );
 
 	Student s3 = s2;
-	Student s4 = std::move(s3);
-	Student s5 = s1 + s2;
+	Student s4 = s1 + s2;
+	Student s5 = !s1;
 	cout << Student::getCount() << endl;
 
 

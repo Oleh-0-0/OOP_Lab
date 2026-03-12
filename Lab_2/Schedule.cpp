@@ -10,7 +10,7 @@ Schedule::Schedule() : Schedule("Monday", "8:20", 212 ) {}
 
 Schedule::~Schedule()
 {
-	cout << "Schedule deleate\n";
+	cout << "Schedule delete\n";
 }
 
 void Schedule::display() const
