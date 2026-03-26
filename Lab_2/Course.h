@@ -1,17 +1,41 @@
 #ifndef COURSE_H
 #define COURSE_H
+
 #include <string>
+#include <iostream>
+#include "Student.h"
+
 using namespace std;
-class Course
-{
+
+class Course {
 private:
-	string name_course;
-	string teacher;
-	int credits;
+    string title;
+    string teacher;
+    int credits;
+
+    Teacher* teacherObj;
+
 public:
-	Course();
-	Course(string name_course, string teacher, int credits);
-	~Course();
-	void display() const;
+    Course();
+    Course(string title, string teacher, int credits = 3);
+    Course(string title, Teacher* teacherObj, int credits = 3);
+
+    Course(const Course& other);
+    Course& operator=(const Course& other);
+
+    virtual ~Course();
+
+    virtual void display() const;
 };
+
+class OnlineCourse : public Course {
+private:
+    string platform;
+
+public:
+    OnlineCourse(string title, Teacher* teacherObj, int credits, string platform);
+
+    void display() const override;
+};
+
 #endif
