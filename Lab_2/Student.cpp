@@ -1,75 +1,61 @@
 #include "Student.h"
 #include <iostream>
-
-using namespace std;
+#include <utility>
 
 int Student::studentCount = 0;
 
-Student::Student() : Student("Oleh", "Frayuk", 18) {}
+Student::Student() : Student("Unknown", 18, 1) {}
 
-Student::Student(string name, string surname, int age)
-    : name(name), surname(surname), age(age) {
+Student::Student(string name, int age, int year)
+    : Person(name), age(age), year(year) {
     studentCount++;
 }
 
 Student::Student(const Student& other)
-    : name(other.name), surname(other.surname), age(other.age) 
-{
+    : Person(other), age(other.age), year(other.year) {
     cout << "Student copied\n";
 }
 
-
-Student::Student(Student&& other)
-    : name(move(other.name)), surname(move(other.surname)),
-    age(other.age)
-{
-    cout << "Student moved\n"
+Student::Student(Student&& other) noexcept
+    : Person(move(other)), age(other.age), year(other.year) {
+    cout << "Student moved\n";
 }
 
-Student::~Student()
-{
-    studentCount--;
-    cout << "Student delete\n";
+Student& Student::operator=(const Student& other) {
+    if (this != &other) {
+        Person::operator=(other);
+        age = other.age;
+        year = other.year;
+    }
+    return *this;
 }
 
-void Student::display() const
-{
-    cout << "Name: " << name << ", Surname: " << surname << ", Age: " << age << endl;
+Student::~Student() {
+    cout << "Student destroyed\n";
 }
 
-void Student::setAge(int age) 
-{
+void Student::display() const {
+    cout << "Name: " << name << ", Age: " << age << ", Year: " << year << endl;
+}
+
+void Student::setAge(int age) {
     this->age = age;
 }
 
-int Student::getCount()
-{
+int Student::getCount() {
     return studentCount;
 }
 
-int Student::getAge()
-{
-    return this->age;
+Student Student::operator+(const Student& other) {
+    return Student(name + "&" + other.name, age, year);
 }
 
-Student Student::operator+(const Student& other)
-{
-    return Student(name + "&" + other.name, surname, age);
-}
-
-Student Student::operator!() const
-{
-    return Student("Not " + name, surname, 0);
-}
-
-ostream& operator<<(ostream& os, const Student& s)
-{
-    os << s.name << " " << s.surname << "" << s.age;
+ostream& operator<<(ostream& os, const Student& s) {
+    os << s.name << " " << s.age << " " << s.year;
     return os;
 }
 
-istream& operator>>(istream& is, Student& s) 
-{
-    is >> s.name >> s.surname >> s.age;
+istream& operator>>(istream& is, Student& s) {
+    is >> s.name >> s.age >> s.year;
     return is;
 }
