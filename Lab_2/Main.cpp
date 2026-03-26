@@ -1,32 +1,46 @@
 #include "Student.h"
-#include "Schedule.h"
 #include "Course.h"
+#include "Schedule.h"
+#include <iostream>
 
-int main()
-{
-	Student s1;
-	Student s2("Damir", "Rozhman", 17)
-	
-	Schedule sc1;
-	Schedule sc2("Tuesday", "11:30", 116 );
+using namespace std;
 
-	Course c1;
-	Course c2("English", "Mudra", 2 );
+int main() {
+    Student s1("Ivan", 18, 1);
+    Student s2("Petro", 19, 2);
 
-	Student s3 = s2;
-	Student s4 = s1 + s2;
-	Student s5 = !s1;
-	cout << Student::getCount() << endl;
+    cout << "Students:\n";
+    cout << "\nTotal students: " << Student::getCount() << endl;
+    s1.display();
+    s2.display();
 
+    Student s3 = s1 + s2;
+    cout << "\nCombined student:\n";
+    s3.display();
 
-	s1.display();
-	s2.display();
+    Teacher t1("Dr.Smith", "Math");
 
-	sc1.display();
-	sc2.display();
+    Course c1("Algebra", "OldTeacher", 3);
+    Course c2("Physics", &t1, 4);
 
-	c1.display();
-	c2.display();
+    cout << "\nCourses:\n";
+    c1.display();
+    c2.display();
 
-	return 0;
+    OnlineCourse oc1("C++", &t1, 5, "Udemy");
+
+    cout << "\nOnline course:\n";
+    oc1.display();
+
+    Schedule sch1("Monday", "10:00", "101", &c2);
+
+    cout << "\nSchedule:\n";
+    sch1.display();
+
+    ExamSchedule ex1("Friday", "12:00", "202", &c2, "Final");
+
+    cout << "\nExam schedule:\n";
+    ex1.display();
+
+    return 0;
 }
