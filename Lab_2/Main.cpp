@@ -41,6 +41,11 @@ int main() {
     Person* test3 = new Student("Vova", 18, 1);
     test3->getStatus();
 
+    Person& test4 = s1;
+    cout << "\n Polymorphism via reference\n";
+    test4.display();
+
+
     cout << "\nCourses:\n";
     c1.display();
     c2.display();
