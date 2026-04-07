@@ -51,6 +51,18 @@ void Schedule::display() const {
         course->display();
 }
 
+bool Schedule::canAccess(string zone) const {
+    return (zone == room); 
+}
+
+void Schedule::showType() const {
+    cout << "Object_type: Schedule_entry";
+}
+
+string Schedule::getIdentifier() const {
+    return day + "_" + time; 
+}
+
 ExamSchedule::ExamSchedule(string day, string time, string room,
     Course* course, string examType)
     : Schedule(day, time, room, course), examType(examType) {

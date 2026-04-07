@@ -45,6 +45,22 @@ int main() {
     cout << "\n Polymorphism via reference\n";
     test4.display();
 
+    cout << "\nUsing intarfsce pointers\n" << endl;
+    InterfaceSystem* ptr1 = &s1;   
+    InterfaceSystem* ptr2 = &t1;   
+    InterfaceSystem* ptr3 = &sch1; 
+
+    ptr1->showType();
+    cout << " \n ID: " << ptr1->getIdentifier()
+        << " \n Access Library: " << (ptr1->canAccess("Library") ? "Yes" : "No") << endl;
+
+    ptr2->showType();
+    cout << " \n ID: " << ptr2->getIdentifier()
+        << " \n Access Library: " << (ptr2->canAccess("Library") ? "Yes" : "No") << endl;
+
+    ptr3->showType();
+    cout << " \n ID: " << ptr3->getIdentifier()
+        << " \n Access Room 101: " << (ptr3->canAccess("101") ? "Yes" : "No") << endl;
 
     cout << "\nCourses:\n";
     c1.display();

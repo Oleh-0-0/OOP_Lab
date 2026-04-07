@@ -1,6 +1,7 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
+#include "InterfaceSystem.h"
 #include <string>
 #include <iostream>
 
@@ -23,7 +24,7 @@ public:
      virtual void getStatus() const { cout << "Status: the person is present at the facility."; }
 };
 
-class Teacher {
+class Teacher : public InterfaceSystem {
 private:
     string name;
     string subject;
@@ -33,13 +34,25 @@ public:
         : name(name), subject(subject) {
     }
 
+    bool canAccess(string zone) const override {
+        return true; 
+    }
+
+    void showType() const override {
+        cout << "Object_type: Teacher";
+    }
+
+    string getIdentifier() const override {
+        return "Teacer " + name;
+    }
+
     void display() const {
         cout << "Teacher: " << name
             << ", Subject: " << subject << endl;
     }
 };
 
-class Student final : public Person {
+class Student final : public Person, public InterfaceSystem {
 private:
     int age;
     int year;
@@ -59,13 +72,19 @@ public:
 
     void display() const override;
 
-    void setAge(int age);
+    void setAge(int age) ;
 
     static int getCount();
 
     void check() const override final;
 
     void getStatus() const override final;
+
+    bool canAccess(string zone) const override;
+
+    void showType() const override;
+
+    string getIdentifier() const override;
 
 
     Student operator+(const Student& other);
