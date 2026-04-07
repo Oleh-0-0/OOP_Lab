@@ -38,6 +38,9 @@ void Student::display() const {
     cout << "Name: " << name << ", Age: " << age << ", Year: " << year << endl;
 }
 
+void Student::check() { cout << "\nExam permit check for student " << name << ": no academic debts found.\n"; }
+void Student::getStatus() { cout << "\nStatus: student " << name << " is actively preparing for exams.\n"; }
+
 void Student::setAge(int age) {
     this->age = age;
 }

@@ -15,10 +15,12 @@ public:
     Person(string name) : name(name) {}
 
     virtual ~Person() {}
-
-    virtual void display() const {
+     void display() {
         cout << "Name: " << name << endl;
     }
+
+     virtual void check() { cout << "General background check in the university database."; }
+     virtual void getStatus() { cout << "Status: the person is present at the facility."; }
 };
 
 class Teacher {
@@ -55,11 +57,16 @@ public:
 
     ~Student();
 
-    void display() const override;
+    void display() const;
 
     void setAge(int age);
 
     static int getCount();
+
+    void check()  override;
+
+    void getStatus() override;
+
 
     Student operator+(const Student& other);
 
